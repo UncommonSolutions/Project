@@ -15,7 +15,7 @@ CREATE TABLE UserLoginTable (
     user_name       VARCHAR(25) NOT NULL,
     access_level    INTEGER NOT NULL,
     password_hash   VARCHAR(50) NOT NULL,
-    last_login      DATE);
+    last_login      DATETIME);
 
 CREATE TABLE AccessLogTable (
     time_stamp      DATE PRIMARY KEY,
