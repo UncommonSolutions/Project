@@ -1,0 +1,164 @@
+html {
+	background-color: white;
+	color: #474747;
+}
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.wrapper>div {
+	display: block;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.row0 {
+	background-color: #FFFFFF;
+}
+
+.row1 {
+	background-color: #777777;
+	color: white;
+}
+
+.row5 {
+	background-color: #F3F3F3;
+}
+
+#content {
+	
+}
+
+.one_half {
+	width: 50%;
+	display: inline-block;
+}
+
+.one_third {
+	width: 33%;
+	display: inline-block;
+}
+
+.two_third {
+	width: 66%;
+	display: inline-block;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.clear, .clear::after {
+	clear: both;
+}
+
+.table {
+	padding-bottom: 7px;
+	padding-top: 3px;
+}
+
+.table>span {
+	display: inline-block;
+}
+
+.table.header {
+	border-bottom: solid 2px #DEDEDE;
+	vertical-align: top;
+	padding-bottom: 10px;
+	color: #56AED4;
+}
+
+.table.row:not(:last-child) {
+	border-bottom: solid 1px #DEDEDE;
+}
+
+.table>span.right {
+	text-align: right;
+}
+
+.container {
+	border: solid 1px black;
+	border-radius: 5px;
+	box-shadow: -5px 5px 20px #888888;
+	padding: 20px 30px 20px 30px;
+	margin: 20px 0;
+}
+
+.title {
+	display: block;
+	margin: 10px 0 5px 0;
+	
+	color: #56AED4;
+	font-weight: bold;
+}
+
+a {
+	color: #B97D2D;
+	text-decoration: none;
+}
+
+input {
+	display: block;
+	resize: none;
+	outline: none;
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+input[type="submit"] {
+	background: #FFFFFF;
+	border-color: #D7D7D7;
+	padding: 8px 11px;
+	border: 1px solid;
+	color: #B97D2D;
+	cursor: pointer;
+}
+
+.button {
+	background: #FFFFFF;
+	border-color: #D7D7D7;
+	padding: 8px 11px;
+	border: 1px solid;
+	color: #B97D2D;
+}
+
+h1 {
+	text-align: center;
+	border-top: 2px solid #474747;
+	border-bottom: 2px solid #474747;
+	padding: 15px 0;
+	font-weight: normal;
+	font-size: 1.7em;
+}
+
+h2 {
+	font-size: 1.3em;
+	margin-bottom: 20px;
+	border-bottom: solid 2px #DEDEDE;
+	padding-bottom: 7px;
+	position: relative;
+}
+
+.center_outer {
+	text-align: center;
+}
+
+.center_inner {
+	display: inline-block;
+	text-align: left;
+}
+
+.edit {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	text-align: right;
+	font-size: 0.7em;
+}

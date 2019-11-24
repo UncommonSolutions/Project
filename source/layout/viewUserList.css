@@ -1,0 +1,19 @@
+.user_name {
+	width: 20%;
+}
+
+.user_job {
+	width: 30%;
+}
+
+.user_email {
+	width: 15%;
+}
+
+.user_edit {
+	width: 7%;
+}
+
+.user_delete {
+	width: 7%;
+}
