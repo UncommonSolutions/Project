@@ -1,0 +1,39 @@
+.user_name {
+	width: 20%;
+}
+
+.user_username {
+	width: 20%;
+}
+
+.user_email {
+	width: 15%;
+}
+
+.user_edit {
+	width: 7%;
+}
+
+.table.user > span.user_delete {
+	width: 7%;
+	text-align: center;
+}
+
+#popup_new_user {
+	text-align: center;
+}
+
+#popup_new_user #user_form {
+	text-align: left;
+	display: inline-block;
+}
+
+#popup_new_user input, #popup_new_user select {
+	margin-bottom: 10px;
+}
+
+#popup_new_user select {
+	display: block;
+	width: 100%;
+	font-size: 16px;
+}

@@ -11,6 +11,21 @@
 </head>
 <?php
 include("./includes/header.php");
+
+$testData = array(
+	array(
+		'id' => 1,
+		'name' => 'Walter Harriman', 
+		'job' => 'Head of Research and Development', 
+		'email' => 'email@domain.com'
+	), 
+	array(
+		'id' => 2,
+		'name' => 'Liam O\'Brien', 
+		'job' => 'Chief Financial Officer', 
+		'email' => 'email@otherdomain.net'
+	)
+);
 ?>
 
 <div id="content" class="wrapper row2"><div>
@@ -21,23 +36,18 @@ include("./includes/header.php");
 			<span class="user_job">Position</span>
 			<span class="user_email">Email</span>
 		</div>
-		<div class="user table row">
-			<span class="user_name">Walter Harriman</span>
-			<span class="user_job">Head of Research and Development</span>
-			<span class="user_email">email@domain.com</span>
-			<span class="user_delete right"><a href="#">Delete</a></span>
-			<span class="user_edit right"><a href="#">Edit</a></span>
-		</div>
-		<div class="user table row">
-			<span class="user_name">Liam O'Brien</span>
-			<span class="user_job">Chief Financial Officer</span>
-			<span class="user_email">email@otherdomain.net</span>
-			<span class="user_delete right"><a href="#">Delete</a></span>
-			<span class="user_edit right"><a href="#">Edit</a></span>
-		</div>
-		<div class="user table row">
-			<span><a href="#">+ Create New User</a></span>
-		</div>
+		<?php
+		foreach($testData as $user) {
+			?>
+			<div class="user table row">
+				<span class="user_name"><?php echo $user['name']; ?></span>
+				<span class="user_job"><?php echo $user['job']; ?></span>
+				<span class="user_email"><?php echo $user['email']; ?></span>
+				<span class="user_view right"><a href="viewUserData.php?userId=<?php echo $user['id']; ?>">View</a></span>
+			</div>
+			<?php
+		}
+		?>
 	</div>
 </div></div>
 <?php

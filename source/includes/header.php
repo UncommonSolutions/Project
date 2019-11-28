@@ -2,8 +2,12 @@
 <link href="layout/header.css" rel="stylesheet" type="text/css" media="all">
 
 <?php
-$USERNAME = "{INSERT USERNAME HERE}";
-$USER_LEVEL = "{USER LEVEL}";
+require("security.php");
+
+if (isset($_SESSION['account'])) {
+	$USERNAME = $_SESSION['account']['data']['name'];
+	$USER_LEVEL = $_SEC_LEVEL_NAME[$_SESSION['account']['access']];
+}
 ?>
 
 <body>
@@ -15,13 +19,19 @@ $USER_LEVEL = "{USER LEVEL}";
 			<nav>
 				<ul>
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Logout</a></li>
+					<?php if (canViewUserList()) { ?>
+					<li><a href="viewUserList.php">View Users</a></li>
+					<?php } ?>
+					<li><a href="logout.php">Logout</a></li>
 				</ul>
 			</nav>
 		</div></div>
 		<div id="headerUserInfo" class="row1 wrapper"><div>
+			<?php 
+			if (isset($_SESSION['account'])) { ?>
 			<label id="headerUsername">Welcome <?php echo $USERNAME; ?></label>
 			<label id="headerAccess">User Access Level: <?php echo $USER_LEVEL; ?></label>
+			<?php } ?>
 		</div></div>
 	</div>
 </body>

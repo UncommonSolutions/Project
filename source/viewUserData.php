@@ -17,9 +17,11 @@ include("./includes/header.php");
 	<div class="container">
 		<h2>
 			Record for Walter Harriman
+			<?php if (canEditUser($_GET['userId'])) { ?>
 			<div class="edit">
 				<a href="#">[ Edit ]</a>
 			</div>
+			<?php } ?>
 		</h2>
 		<div>
 			<div class="two_third">
