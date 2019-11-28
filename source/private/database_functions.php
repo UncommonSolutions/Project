@@ -2,8 +2,14 @@
 
 
 function db_connect() {
-    $configPath = dirname($_SERVER['DOCUMENT_ROOT'], 1);
-    $db_credentials = include($configPath . "/config.php");
+    $configPath = dirname($_SERVER['DOCUMENT_ROOT']);
+    //$db_credentials = include($configPath . "/config.php");
+	$db_credentials = array(
+		'db_host' => 'localhost',
+		'db_user' => 'root',
+		'db_pass' => '187900',
+		'db_name' => 'uncommonsolutions'
+	);
 
     $connection = mysqli_connect($db_credentials['db_host'], $db_credentials['db_user'], $db_credentials['db_pass'], $db_credentials['db_name']);
     confirm_db_connect();

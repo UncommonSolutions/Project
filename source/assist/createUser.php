@@ -1,6 +1,7 @@
 <?php
 SESSION_START();
 require("../includes/security.php");
+require_once("../private/initialize.php");
 
 $response = [];
 $response['success'] = FALSE;
@@ -85,7 +86,21 @@ if (isset($_POST['new_user'])) {
 		$accessLevel
 	*/
 	
-	returnWithResponse(TRUE, 100, "The user '$username' has been created");
+	$user = [
+		'user_id' => NULL, 
+		'user_name' => $username, 
+		'access_level' => $accessLevel,
+		'password_hash' => $passHash,
+		'last_login' => NULL
+	];
+	
+	$result = create_user($user);
+	
+	if ($result === TRUE) {
+		returnWithResponse(TRUE, 100, "The user '$username' has been created");
+	} else {
+		returnWithResponse(TRUE, 300, "The user failed to be saved to the database");
+	}
 }
 
 /*********************************************************************************************************/

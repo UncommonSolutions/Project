@@ -1,5 +1,5 @@
 <?php
-require_once('../../../private/initialize.php');
+require_once(__DIR__ . '/../initialize.php');
 
 function find_all_users() {
     global $database;
@@ -28,9 +28,9 @@ function create_user($user) {
     //$hashed_password = password_hash($user['hashed_password'], PASSWORD_BCRYPT);
 
     $sql = "INSERT INTO UserLoginTable ";
-    $sql .= "(user_id, user_name, access_level, password_hash, last_login) ";
+    $sql .= "(user_number, user_name, access_level, password_hash, last_login) ";
     $sql .= "VALUES (";
-    $sql .= "'" . mysqli_real_escape_string($database, $user['user_id']) . "',";
+    $sql .= "'" . mysqli_real_escape_string($database, $user['user_number']) . "',";
     $sql .= "'" . mysqli_real_escape_string($database, $user['user_name']) . "',";
     $sql .= "'" . mysqli_real_escape_string($database, $user['access_level']) . "',";
     $sql .= "'" . mysqli_real_escape_string($database, $user['password_hash']) . "', ";
