@@ -2,7 +2,6 @@
 require_once('../../../private/initialize.php');
 
 $user = [
-    'user_id' => '',
     'user_name' => '',
     'access_level' => '',
     'password_hash' => '',
@@ -11,7 +10,6 @@ $user = [
 
 if (is_post_request()) {
 
-    $user['user_id'] = $_POST['user_id'];
     $user['user_name'] = $_POST['user_name'];
     $user['access_level'] = $_POST['access_level'];
     $user['password_hash'] = $_POST['password_hash'];
@@ -21,8 +19,9 @@ if (is_post_request()) {
 
 
     if ($result === true) {
-
-        redirect_to(url_for('private/api_test_gui/UserLoginTable/show.php?id=' . $user['user_id']));
+        // Inserts auto incremented id into database
+        $new_id = mysqli_insert_id($database);
+        redirect_to(url_for('private/api_test_gui/UserLoginTable/read.php?id=' . $new_id));
     } else {
         // show errors
     }
@@ -39,11 +38,6 @@ if (is_post_request()) {
         <h1>Create User</h1>
 
         <form action="<?php echo url_for('/private/api_test_gui/UserLoginTable/create.php'); ?>" method="post">
-
-            <dl>
-                <dt>User Id</dt>
-                <dd><input type="text" name="user_id" value="<?php echo h($user['user_id']); ?>"/></dd>
-            </dl>
 
             <dl>
                 <dt>Username</dt>

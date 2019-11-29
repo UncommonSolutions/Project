@@ -18,13 +18,4 @@ require_once(__DIR__ . '/database_functions.php');
 require_once(__DIR__ . '/functions.php');
 require_once(__DIR__ . '/api/UserLoginTableApi.php');
 
-/*// Autoload class definitions
-function my_autoload($class) {
-    if(preg_match('/\A\w+\Z/', $class)) {
-        include('classes/' . $class . '.php');
-    }
-}
-spl_autoload_register('my_autoload');*/
-
 $database = db_connect();
-//DatabaseObject::set_database($database);
