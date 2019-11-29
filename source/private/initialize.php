@@ -14,9 +14,8 @@ $source_end = strpos($_SERVER['SCRIPT_NAME'], '/source') + 7;
 $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $source_end);
 define("WWW_ROOT", $doc_root);
 
-require_once('database_functions.php');
-require_once('functions.php');
-require_once ('api/UserLoginTableApi.php');
-
+require_once(__DIR__ . '/database_functions.php');
+require_once(__DIR__ . '/functions.php');
+require_once(__DIR__ . '/api/UserLoginTableApi.php');
 
 $database = db_connect();

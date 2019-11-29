@@ -97,7 +97,7 @@ body {
 	font-weight: bold;
 }
 
-a {
+a, .link {
 	color: #B97D2D;
 	text-decoration: none;
 }
