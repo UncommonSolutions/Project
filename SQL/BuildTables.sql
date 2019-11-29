@@ -25,6 +25,7 @@ CREATE TABLE UserLoginTable (
 -- Maintain referential integrity and wipe records if the associated user
 -- Account entry no longer exists
 CREATE TABLE AccessLogTable (
+
     time_stamp      TIMESTAMP PRIMARY KEY 
 		DEFAULT CURRENT_TIMESTAMP,
     user_number     INTEGER NOT NULL,
