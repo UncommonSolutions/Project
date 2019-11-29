@@ -73,7 +73,7 @@ if (isset($_POST['new_user'])) {
 	$username = $baseUsername;
 	
 	$usernameSuffix = 2;
-	while ($user = find_user_by_name($username) != NULL) {
+	while ($user = find_user_by_username($username) != NULL) {
 		$username = $baseUsername . $usernameSuffix;
 		$usernameSuffix++;
 	}

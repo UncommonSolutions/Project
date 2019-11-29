@@ -15,12 +15,13 @@ CREATE TABLE UserLoginTable (
     user_name       VARCHAR(25) NOT NULL,
     access_level    INTEGER NOT NULL,
     password_hash   VARCHAR(128) NOT NULL,
-    last_login      DATETIME DEFAULT 
+    last_login      TIMESTAMP DEFAULT 
 		CURRENT_TIMESTAMP 
 		ON UPDATE CURRENT_TIMESTAMP);
 
 CREATE TABLE AccessLogTable (
-    time_stamp      DATE PRIMARY KEY,
+    time_stamp      TIMESTAMP PRIMARY KEY 
+		DEFAULT CURRENT_TIMESTAMP,
     user_number     INTEGER NOT NULL,
     login_success   BOOLEAN NOT NULL,
     FOREIGN KEY (user_number)
@@ -28,16 +29,16 @@ CREATE TABLE AccessLogTable (
         ON UPDATE CASCADE ON DELETE CASCADE);
     
 CREATE TABLE JobTable (
-    job_number              INTEGER PRIMARY KEY,
+    job_number              INTEGER PRIMARY KEY AUTO_INCREMENT,
     position_name           VARCHAR(100) NOT NULL,
     position_description    VARCHAR(1000));
     
 CREATE TABLE GroupTable (
-    group_number    INTEGER PRIMARY KEY,
+    group_number    INTEGER PRIMARY KEY AUTO_INCREMENT,
     group_name      VARCHAR(100) NOT NULL);
 
 CREATE TABLE ContactTable (
-    contact_number  INTEGER PRIMARY KEY,
+    contact_number  INTEGER PRIMARY KEY AUTO_INCREMENT,
     last_name       VARCHAR(50) NOT NULL,
     first_name      VARCHAR(50) NOT NULL,
     middle_name     VARCHAR(50),
@@ -46,7 +47,7 @@ CREATE TABLE ContactTable (
     email           VARCHAR(100));
 
 CREATE TABLE PersonnelTable (
-    employee_number             INTEGER PRIMARY KEY,
+    employee_number             INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_number                 INTEGER NOT NULL,
     SSN                         VARCHAR(11),
     personal_contact_number     INTEGER NOT NULL,
@@ -66,7 +67,7 @@ CREATE TABLE PersonnelTable (
         ON UPDATE CASCADE);
     
 CREATE TABLE PersonnelRecordTable (
-    record_number   INTEGER PRIMARY KEY,
+    record_number   INTEGER PRIMARY KEY AUTO_INCREMENT,
     record_date     DATE,
     event_record    VARCHAR(1000),
     employee_number INTEGER NOT NULL,
@@ -75,7 +76,7 @@ CREATE TABLE PersonnelRecordTable (
         ON UPDATE CASCADE);
 
 CREATE TABLE TrainingRecordTable (
-    record_number   INTEGER PRIMARY KEY,
+    record_number   INTEGER PRIMARY KEY AUTO_INCREMENT,
     record_date     DATE,
     record_content  VARCHAR(1000),
     employee_number INTEGER NOT NULL,
@@ -84,7 +85,7 @@ CREATE TABLE TrainingRecordTable (
         ON UPDATE CASCADE);
 
 CREATE TABLE ResumeTable (
-    resume_number   INTEGER PRIMARY KEY,
+    resume_number   INTEGER PRIMARY KEY AUTO_INCREMENT,
     resume_date     DATE,
     resume_content  BLOB,
     employee_number INTEGER NOT NULL,

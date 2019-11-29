@@ -37,23 +37,27 @@ function returnWithResponse($s, $e, $m) {
 
 /*********************************************************************************************************/
 
-$user = find_user_by_name($_POST['username']);
+$user = find_user_by_username($_POST['username']);
 
 if ($user == NULL) {
 	returnWithResponse(FALSE, 200, "Invalid Credentials");
 } else {
+	$USER_ID = $user['user_number'];
+	$USER_ACCESS = $user['access_level'];
+	
 	if (!password_verify($_POST['password'], $user['password_hash'])) {
+		create_access_log($USER_ID, FALSE);
 		returnWithResponse(FALSE, 200, "Invalid Credentials");
 	}
 }
-
-$USER_ID = $user['user_number'];
-$USER_ACCESS = $user['access_level'];
 
 $_SESSION['account'] = [];
 $_SESSION['account']['id'] = $USER_ID;
 $_SESSION['account']['access'] = $USER_ACCESS;
 $_SESSION['account']['data']['name'] = "John Smith";
+
+create_access_log($USER_ID, TRUE);
+set_last_login($USER_ID);
 
 switch ($USER_ACCESS) {
 	case $_SEC_LEVEL['PRIVILEGED']:
