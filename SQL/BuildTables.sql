@@ -11,11 +11,13 @@ DROP TABLE UserLoginTable;
 
 
 CREATE TABLE UserLoginTable (
-    user_number     INTEGER PRIMARY KEY,
+    user_number     INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_name       VARCHAR(25) NOT NULL,
     access_level    INTEGER NOT NULL,
-    password_hash   VARCHAR(50) NOT NULL,
-    last_login      DATETIME);
+    password_hash   VARCHAR(128) NOT NULL,
+    last_login      DATETIME DEFAULT 
+		CURRENT_TIMESTAMP 
+		ON UPDATE CURRENT_TIMESTAMP);
 
 CREATE TABLE AccessLogTable (
     time_stamp      DATE PRIMARY KEY,
@@ -99,3 +101,5 @@ CREATE TABLE UserGroupTable (
 	FOREIGN KEY (group_number)
 		REFERENCES GroupTable(group_number)
         ON UPDATE CASCADE ON DELETE CASCADE);
+	
+INSERT INTO UserLoginTable (user_number, user_name, access_level, password_hash, last_login) VALUES (0, "sysadmin", 3, "$2y$10$adPqrmjo64L6E9jF6WfY8OauqXjt62gn31lDkK4UlAzbYPoUac9Xy", NULL);

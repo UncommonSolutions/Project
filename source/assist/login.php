@@ -1,6 +1,7 @@
 <?php
 SESSION_START();
 require("../includes/security.php");
+require_once("../private/initialize.php");
 
 $response = [];
 $response['success'] = FALSE;
@@ -36,14 +37,18 @@ function returnWithResponse($s, $e, $m) {
 
 /*********************************************************************************************************/
 
-//if wrong credentials:
-	//returnWithResponse(FALSE, 200, "Invalid Login");
-	
-$USER_ID = 2;
-//$USER_ACCESS = $_SEC_LEVEL['USER'];
-//$USER_ACCESS = $_SEC_LEVEL['PRIVILEGED'];
-//$USER_ACCESS = $_SEC_LEVEL['ADMIN'];
-$USER_ACCESS = $_SEC_LEVEL['SYS_ADMIN'];
+$user = find_user_by_name($_POST['username']);
+
+if ($user == NULL) {
+	returnWithResponse(FALSE, 200, "Invalid Credentials");
+} else {
+	if (!password_verify($_POST['password'], $user['password_hash'])) {
+		returnWithResponse(FALSE, 200, "Invalid Credentials");
+	}
+}
+
+$USER_ID = $user['user_number'];
+$USER_ACCESS = $user['access_level'];
 
 $_SESSION['account'] = [];
 $_SESSION['account']['id'] = $USER_ID;

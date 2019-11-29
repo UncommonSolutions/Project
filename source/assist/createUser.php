@@ -72,22 +72,16 @@ if (isset($_POST['new_user'])) {
 	$baseUsername = strtolower(substr($firstname, 0, 1) . substr($middlename, 0, 1) . $lastname);
 	$username = $baseUsername;
 	
-	//while $username exists:
-		//$username = $baseUsername . #;
+	$usernameSuffix = 2;
+	while ($user = find_user_by_name($username) != NULL) {
+		$username = $baseUsername . $usernameSuffix;
+		$usernameSuffix++;
+	}
 		
 	$passHash = password_hash($password, PASSWORD_DEFAULT);
 	
-	/* Store:
-		$firstname
-		$middlename
-		$lastname
-		$username
-		$passHash
-		$accessLevel
-	*/
-	
 	$user = [
-		'user_id' => NULL, 
+		'user_number' => NULL, 
 		'user_name' => $username, 
 		'access_level' => $accessLevel,
 		'password_hash' => $passHash,

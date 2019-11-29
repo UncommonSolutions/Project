@@ -21,7 +21,7 @@
 $(document).ready(function() {
 	$(document.body).on("click", ".user_delete", function(e) {
 		var target = $(e.target);
-		var id = target.attr('data-user-id');
+		var id = target.closest(".user_delete").attr('data-user-id');
 		
 		$("#delete_user_form input[name='user_id']").val(id);
 	});
@@ -32,23 +32,8 @@ $(document).ready(function() {
 <?php
 include("./includes/header.php");
 include("./libs/alert/alert.php");
+require_once("./private/initialize.php");
 
-$testData = array(
-	array(
-		'id' => 1,
-		'name' => 'Walter Harriman', 
-		'username' => 'wharriman', 
-		'email' => 'email@domain.com'
-	), 
-	array(
-		'id' => 2,
-		'name' => 'Liam O\'Brien', 
-		'username' => 'lobrien', 
-		'email' => 'email@otherdomain.net'
-	)
-);
-?>
-<?php
 if (isset($_POST['create_return']) || isset($_POST['delete_return'])) { 
 	$status = unserialize($_POST['status']);
 	if ($status['success']) {
@@ -71,14 +56,15 @@ if (isset($_POST['create_return']) || isset($_POST['delete_return'])) {
 			<span class="user_delete right">Delete</span>
 		</div>
 		<?php
-		foreach($testData as $user) {
+		
+		foreach(find_all_users() as $user) {
 			?>
 			<div class="user table row">
-				<span class="user_username"><?php echo $user['username']; ?></span>
-				<span class="user_name"><?php echo $user['name']; ?></span>
-				<span class="user_email"><?php echo $user['email']; ?></span>
+				<span class="user_username"><?php echo $user['user_name']; ?></span>
+				<span class="user_name"><?php //echo $user['name']; ?></span>
+				<span class="user_email"><?php //echo $user['email']; ?></span>
 				<?php if (canDeleteUser()) { ?>
-					<span class="user_delete right popup_link link" data-popup-id="delete_user" data-user-id="<?php echo $user['id']; ?>">
+					<span class="user_delete right popup_link link" data-popup-id="delete_user" data-user-id="<?php echo $user['user_number']; ?>">
 						<i class="fa fa-times"></i>
 					</span>
 				<?php } ?>

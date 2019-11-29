@@ -14,7 +14,19 @@ function find_user_by_id($id) {
      global $database;
 
      $sql = "SELECT * FROM UserLoginTable ";
-     $sql .= "WHERE user_id='" . mysqli_real_escape_string($database, $id) . "'";
+     $sql .= "WHERE user_number='" . mysqli_real_escape_string($database, $id) . "'";
+     $result = mysqli_query($database, $sql);
+     confirm_result_set($result);
+     $user = mysqli_fetch_assoc($result);
+     mysqli_free_result($result);
+     return $user;
+ }
+ 
+function find_user_by_name($username) {
+     global $database;
+
+     $sql = "SELECT * FROM UserLoginTable ";
+     $sql .= "WHERE user_name='" . mysqli_real_escape_string($database, $username) . "'";
      $result = mysqli_query($database, $sql);
      confirm_result_set($result);
      $user = mysqli_fetch_assoc($result);
@@ -52,13 +64,13 @@ function create_user($user) {
  function update_user($user) {
      global $database;
      $sql = "UPDATE UserLoginTable SET ";
-     $sql.= "user_id='" . mysqli_real_escape_string($database, $user['user_id']) . "', ";
+     $sql.= "user_number='" . mysqli_real_escape_string($database, $user['user_number']) . "', ";
      $sql.= "user_name='" . mysqli_real_escape_string($database, $user['user_name']) . "', ";
      $sql.= "access_level='" . mysqli_real_escape_string($database, $user['access_level']) . "', ";
      $sql.= "password_hash='" . mysqli_real_escape_string($database, $user['password_hash']) . "', ";
      $sql.= "last_login='" . mysqli_real_escape_string($database, $user['last_login']) . "'";
 
-     $sql .= " WHERE user_id = '" . mysqli_real_escape_string($database, $user['user_id']) . "' LIMIT 1";
+     $sql .= " WHERE user_number = '" . mysqli_real_escape_string($database, $user['user_number']) . "' LIMIT 1";
 
     $result = mysqli_query($database, $sql);
     if($result) {
@@ -74,7 +86,7 @@ function delete_user($id) {
     global $database;
 
     $sql = "DELETE FROM UserLoginTable ";
-    $sql .= "where user_id='" . mysqli_real_escape_string($database, $id) . "'";
+    $sql .= "where user_number='" . mysqli_real_escape_string($database, $id) . "'";
     $sql .= "LIMIT 1";
 
     $result = MYSQLI_QUERY($database, $sql);

@@ -36,10 +36,10 @@ if (isset($_POST['login_return'])) {
 	<div class="center_outer"><div class="center_inner">
 		<form id="login_form" action="./assist/login.php" method="POST">
 			<label>Username</label>
-			<input type="text" />
+			<input type="text" name="username" />
 			
 			<label>Password</label>
-			<input type="password" />
+			<input type="password" name="password" />
 			
 			<div class="center">
 				<input type="submit" value="Login" />

@@ -1,6 +1,7 @@
 <?php
 SESSION_START();
 require("../includes/security.php");
+require_once("../private/initialize.php");
 
 $response = [];
 $response['success'] = FALSE;
@@ -26,6 +27,7 @@ function returnCurrentResponse() {
 		document.getElementById('return').submit();
 	</script>
 	<?php
+	exit();
 }
 
 function returnWithResponse($s, $e, $m) {
@@ -42,10 +44,11 @@ if (!canDeleteUser()) {
 if (isset($_POST['delete_user'])) {
 	$id = $_POST['user_id'];
 	
-	$username = "FETCH USERNAME";
+	$username = find_user_by_id($id)['user_name'];
 	
-	//if id doesn't exist:
-		//returnWithResponse(FALSE, 200, "The specified user could not be found");
+	if (delete_user($id) === FALSE) {
+		returnWithResponse(FALSE, 200, "The specified user could not be deleted");
+	}
 	
 	returnWithResponse(TRUE, 100, "The user '$username' has been deleted");
 }
