@@ -1,13 +1,13 @@
-DROP TABLE UserGroupTable;
-DROP TABLE ResumeTable;
-DROP TABLE TrainingRecordTable;
-DROP TABLE PersonnelRecordTable;
-DROP TABLE PersonnelTable;
-DROP TABLE ContactTable;
-DROP TABLE GroupTable;
-DROP TABLE JobTable;
-DROP TABLE AccessLogTable;
-DROP TABLE UserLoginTable;
+DROP TABLE IF EXISTS UserGroupTable;
+DROP TABLE IF EXISTS ResumeTable;
+DROP TABLE IF EXISTS TrainingRecordTable;
+DROP TABLE IF EXISTS PersonnelRecordTable;
+DROP TABLE IF EXISTS PersonnelTable;
+DROP TABLE IF EXISTS ContactTable;
+DROP TABLE IF EXISTS GroupTable;
+DROP TABLE IF EXISTS JobTable;
+DROP TABLE IF EXISTS AccessLogTable;
+DROP TABLE IF EXISTS UserLoginTable;
 
 
 CREATE TABLE UserLoginTable (
