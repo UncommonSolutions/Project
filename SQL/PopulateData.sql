@@ -4,28 +4,46 @@
 --INSERT INTO AccessLogTable (time_stamp, user_number, login_success)
 --	VALUES ('2019-11-19 17:00:00', 1234, TRUE);
 
+
+-- Populate Group Table
+INSERT INTO GroupTable(group_name) VALUES('Software Development');
+INSERT INTO GroupTable(group_name) VALUES('Accounting');
+INSERT INTO GroupTable(group_name) VALUES('Human Resources');
+INSERT INTO GroupTable(group_name) VALUES('Quality Assurance');
+INSERT INTO GroupTable(group_name) VALUES('Marketing');
+
+
 INSERT INTO JobTable (position_name, position_description)
 	VALUES ('Project Manager', 'Responsible for the oversight and execution of all assigned projects.');
-	-- Populate GroupTable
-INSERT INTO GroupTable (group_name)
-	VALUES ('Software Development');
-	INSERT INTO GroupTable (group_name)
-	VALUES ('Project Management');
-	INSERT INTO GroupTable (group_name)
-	VALUES ('Accounting');
-	INSERT INTO GroupTable (group_name)
-	VALUES ('Marketing');
-	INSERT INTO GroupTable (group_name)
-	VALUES ('Quality Assurance');
+	-- Populate JobTable
+INSERT INTO JobTable (position_name, position_description)
+	VALUES ('Software Development', 'Develop software');
+INSERT INTO JobTable (position_name, position_descriptione)
+	VALUES ('Project Management', 'Responsible for the oversight and execution of all assigned projects.');
+INSERT INTO JobTable (position_name, position_description)
+	VALUES ('Integration Engineer', 'Integrate the various software components');
+INSERT INTO JobTable (position_name, position_description)
+	VALUES ('UX/HCI', 'Design user interface for software products');
+INSERT INTO JobTable (position_name, position_description)
+	VALUES ('Technical Writer', 'Compile technical specifications and requirements into readable documentation');
+INSERT INTO JobTable (position_name, position_description)
+    VALUES ('Test Engineer', 'Perform regression testing, integration testing, smoke testing, and interface testing on software products.');
     
 INSERT INTO ContactTable (last_name, first_name, middle_name, phone_number, address, email)
 	VALUES ('Smith', 'Bob', 'Robert', '555-555-5555', '1234 Nowhere St, Springfield, IL 12345', 'bobsmith@UCS.com');
 
 INSERT INTO ContactTable (last_name, first_name, middle_name, phone_number, address, email)
 	VALUES ('Smith', 'Janice', 'Joy', '555-555-5551', '1234 Nowhere St, Springfield, IL 12345', 'jsmith@gmail.com');
-    
-INSERT INTO PersonnelTable (user_number, SSN, personal_contact_number, emergency_contact_number, job_number)
-	VALUES (3, '123-45-6789', 8921, 8922, 3232);
+
+-- populate PersonnelTable
+INSERT INTO PersonnelTable (user_number, SSN, personal_contact_number, emergency_contact_number, job_number, group_number)
+	VALUES (3, '123-45-6789', 6, 6, 1, 1);
+
+INSERT INTO PersonnelTable (user_number, SSN, personal_contact_number, emergency_contact_number, job_number, group_number)
+VALUES (9, '253-45-6789', 1, 1, 2, 2);
+
+INSERT INTO PersonnelTable (user_number, SSN, personal_contact_number, emergency_contact_number, job_number, group_number)
+VALUES (10, '999-45-6789', 2, 2, 3, 3);
 
 
 INSERT INTO PersonnelRecordTable (record_date, event_record, employee_number)

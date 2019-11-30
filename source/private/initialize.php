@@ -18,5 +18,6 @@ require_once(__DIR__ . '/database_functions.php');
 require_once(__DIR__ . '/functions.php');
 require_once(__DIR__ . '/api/UserLoginTableApi.php');
 require_once(__DIR__ . '/api/ContactTableApi.php');
+require_once(__DIR__ . '/api/PersonnelTableApi.php');
 
 $database = db_connect();
