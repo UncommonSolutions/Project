@@ -28,10 +28,6 @@ function create_personnel($personnel)
 {
     global $database;
 
-    // hash password before inserting record
-    //Password is hashed in assist/createpersonnel.php
-    //$password_hash = password_hash($personnel['password_hash'], PASSWORD_BCRYPT);
-
     $sql = "INSERT INTO PersonnelTable ";
     $sql .= "(user_number, ssn, personal_contact_number, emergency_contact_number, job_number, group_number) ";
     $sql .= "VALUES (";

@@ -28,10 +28,6 @@ function create_contact($contact)
 {
     global $database;
 
-    // hash password before inserting record
-    //Password is hashed in assist/createcontact.php
-    //$password_hash = password_hash($contact['password_hash'], PASSWORD_BCRYPT);
-
     $sql = "INSERT INTO ContactTable ";
     $sql .= "(last_name, first_name, middle_name, phone_number, address, email) ";
     $sql .= "VALUES (";
