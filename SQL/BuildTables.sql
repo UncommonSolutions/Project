@@ -61,10 +61,11 @@ CREATE TABLE ContactTable (
 CREATE TABLE PersonnelTable (
     employee_number             INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_number                 INTEGER NOT NULL,
-    SSN                         VARCHAR(11),
+    ssn                         VARCHAR(11),
     personal_contact_number     INTEGER NOT NULL,
     emergency_contact_number    INTEGER,
     job_number                  INTEGER,
+    group_number                INTEGER,
 	FOREIGN KEY (user_number)
 		REFERENCES UserLoginTable(user_number)
         ON UPDATE CASCADE,
@@ -76,6 +77,9 @@ CREATE TABLE PersonnelTable (
         ON UPDATE CASCADE,
 	FOREIGN KEY (job_number)
 		REFERENCES JobTable(job_number)
+        ON UPDATE CASCADE,
+    FOREIGN KEY (group_number)
+		REFERENCES GroupTable(group_number)
         ON UPDATE CASCADE);
 
 -- Create table for storing personnel record information for personnel actions
@@ -107,19 +111,6 @@ CREATE TABLE ResumeTable (
     FOREIGN KEY (employee_number)
 		REFERENCES PersonnelTable(employee_number)
         ON UPDATE CASCADE);
-
--- Create referential relationship table to tie personnel to groups
--- This method allows multiple users per group and multiple groups
--- Per user.
-CREATE TABLE UserGroupTable (
-    group_number    INTEGER NOT NULL,
-    employee_number INTEGER NOT NULL,
-    FOREIGN KEY (employee_number)
-		REFERENCES PersonnelTable(employee_number)
-        ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (group_number)
-		REFERENCES GroupTable(group_number)
-        ON UPDATE CASCADE ON DELETE CASCADE);
 
 -- Add default user sysadmin
 INSERT INTO UserLoginTable (user_number, user_name, access_level, password_hash, last_login) VALUES (0, "sysadmin", 3, "$2y$10$adPqrmjo64L6E9jF6WfY8OauqXjt62gn31lDkK4UlAzbYPoUac9Xy", NULL);
