@@ -7,7 +7,7 @@ $contact_set = find_all_contacts();
 <h1>Contact</h1>
 
 <div class="actions">
-    <a class="action" href="<?php echo url_for('/private/api_test_gui/ContactTable/create.php'); ?>">Add contact</a>
+    <a class="action" href="<?php echo url_for('/private/api_test_gui/contactTable/create.php'); ?>">Add contact</a>
 </div>
 
 <table>
@@ -27,9 +27,9 @@ $contact_set = find_all_contacts();
             <td><?php  echo h(u($contact['phone_number'])); ?></td>
             <td><?php  echo $contact['address']; ?></td>
             <td><?php  echo h($contact['email']); ?></td>
-            <td><a class="action" href="<?php echo url_for('/private/api_test_gui/ContactTable/read.php?id=' . h(u($contact['contact_number']))); ?>">View</a></td>
-            <td><a class="action" href="<?php echo url_for('/private/api_test_gui/ContactTable/edit.php?id=' . h(u($contact['contact_number']))); ?>">Edit</a></td>
-            <td><a class="action" href="<?php echo url_for('/private/api_test_gui/ContactTable/delete.php?id=' . h(u($contact['contact_number']))); ?>">Delete</a></td>
+            <td><a class="action" href="<?php echo url_for('/private/api_test_gui/contactTable/read.php?id=' . h(u($contact['contact_number']))); ?>">View</a></td>
+            <td><a class="action" href="<?php echo url_for('/private/api_test_gui/contactTable/edit.php?id=' . h(u($contact['contact_number']))); ?>">Edit</a></td>
+            <td><a class="action" href="<?php echo url_for('/private/api_test_gui/contactTable/delete.php?id=' . h(u($contact['contact_number']))); ?>">Delete</a></td>
         </tr>
     <?php } ?>
 

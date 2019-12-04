@@ -6,7 +6,7 @@ $id = $_GET['id'] ?? '1';
 $user = find_user_by_id($id);
 
 ?>
-<a class="" href="<?php echo url_for('private/api_test_gui/UserLoginTable/index.php'); ?>">&laquo; Back to List</a>
+<a class="" href="<?php echo url_for('private/api_test_gui/userLoginTable/index.php'); ?>">&laquo; Back to List</a>
 
 
 <h1>Member: <?php echo h($user['user_name']); ?></h1>
