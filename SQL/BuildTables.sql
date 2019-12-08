@@ -68,19 +68,19 @@ CREATE TABLE PersonnelTable (
     group_number                INTEGER,
 	FOREIGN KEY (user_number)
 		REFERENCES UserLoginTable(user_number)
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (personal_contact_number)
 		REFERENCES ContactTable(contact_number)
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (emergency_contact_number)
 		REFERENCES ContactTable(contact_number)
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (job_number)
 		REFERENCES JobTable(job_number)
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (group_number)
 		REFERENCES GroupTable(group_number)
-        ON UPDATE CASCADE);
+        ON UPDATE CASCADE ON DELETE CASCADE);
 
 -- Create table for storing personnel record information for personnel actions
 CREATE TABLE PersonnelRecordTable (

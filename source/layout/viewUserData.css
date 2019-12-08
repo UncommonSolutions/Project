@@ -1,8 +1,47 @@
 .training_date {
-	width: 15%;
+	width: 25%;
 }
 
 #view_resume {
 	margin-top: 20px;
+	margin-bottom: 40px;
 	display: inline-block;
+}
+
+#resume_file_submit {
+	margin-top: 10px;
+	display: inline-block;
+}
+
+#edit_container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	text-align: right;
+	font-size: 0.7em;
+}
+
+#new_training_content {
+	width: 100%;
+}
+
+.training_info {
+	width: 74%;
+	vertical-align: top;
+}
+
+.training.table.row {
+	vertical-align: middle;
+	height: 20px;
+}
+
+.new_row .training_info {
+	width: 63%;
+}
+
+.training_add, .training_cancel {
+	width: 5%;
+	float: right;
+	text-align: center;
 }

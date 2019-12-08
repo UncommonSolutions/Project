@@ -11,21 +11,7 @@
 </head>
 <?php
 include("./includes/header.php");
-
-$testData = array(
-	array(
-		'id' => 1,
-		'name' => 'Walter Harriman', 
-		'job' => 'Head of Research and Development', 
-		'email' => 'email@domain.com'
-	), 
-	array(
-		'id' => 2,
-		'name' => 'Liam O\'Brien', 
-		'job' => 'Chief Financial Officer', 
-		'email' => 'email@otherdomain.net'
-	)
-);
+require_once("./private/initialize.php");
 ?>
 
 <div id="content" class="wrapper row2"><div>
@@ -37,13 +23,21 @@ $testData = array(
 			<span class="user_email">Email</span>
 		</div>
 		<?php
-		foreach($testData as $user) {
+		foreach(find_all_users() as $user) {
+			if ($user['access_level'] == $_SEC_LEVEL['SYS_ADMIN']) {
+				continue;
+			}
+			$personnel = find_personnel_by_user_id($user['user_number']);
+			$contact = find_contact_by_id($personnel['personal_contact_number']);
+			$name = $contact['first_name'] . " " . $contact['middle_name'] . " " . $contact['last_name'];
+			
+			$job = find_job_by_id($personnel['job_number']);
 			?>
 			<div class="user table row">
-				<span class="user_name"><?php echo $user['name']; ?></span>
-				<span class="user_job"><?php echo $user['job']; ?></span>
-				<span class="user_email"><?php echo $user['email']; ?></span>
-				<span class="user_view right"><a href="viewUserData.php?userId=<?php echo $user['id']; ?>">View</a></span>
+				<span class="user_name"><?php echo $name; ?></span>
+				<span class="user_job"><?php echo $job['position_name']; ?></span>
+				<span class="user_email"><?php echo $contact['email']; ?></span>
+				<span class="user_view right"><a href="viewUserData.php?userId=<?php echo $user['user_number']; ?>">View</a></span>
 			</div>
 			<?php
 		}

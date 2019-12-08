@@ -23,6 +23,17 @@ function find_trainingRecord_by_id($id)
     return $trainingRecord;
 }
 
+function find_all_training_records_by_user($id) {
+	global $database;
+
+    $sql = "SELECT * FROM TrainingRecordTable ";
+    $sql .= "WHERE employee_number='" . mysqli_real_escape_string($database, $id) . "' ";
+	$sql .= "ORDER BY record_date DESC";
+    $result = mysqli_query($database, $sql);
+    confirm_result_set($result);
+    return $result;
+}
+
 
 function create_trainingRecord($trainingRecord)
 {

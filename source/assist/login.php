@@ -51,10 +51,15 @@ if ($user == NULL) {
 	}
 }
 
+$personnel = find_personnel_by_user_id($USER_ID);
+
+$contact = find_contact_by_id($personnel['personal_contact_number']);
+$name = $contact['first_name'] . " " . $contact['middle_name'] . " " . $contact['last_name'];
+
 $_SESSION['account'] = [];
 $_SESSION['account']['id'] = $USER_ID;
 $_SESSION['account']['access'] = $USER_ACCESS;
-$_SESSION['account']['data']['name'] = "John Smith";
+$_SESSION['account']['data']['name'] = $name;
 
 create_access_log($USER_ID, TRUE);
 set_last_login($USER_ID);

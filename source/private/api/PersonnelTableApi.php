@@ -23,6 +23,19 @@ function find_personnel_by_id($id)
     return $personnel;
 }
 
+function find_personnel_by_user_id($id)
+{
+    global $database;
+
+    $sql = "SELECT * FROM PersonnelTable ";
+    $sql .= "WHERE user_number='" . mysqli_real_escape_string($database, $id) . "'";
+    $result = mysqli_query($database, $sql);
+    confirm_result_set($result);
+    $personnel = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $personnel;
+}
+
 
 function create_personnel($personnel)
 {
@@ -63,7 +76,6 @@ function update_personnel($personnel)
     $sql .= "group_number='" . mysqli_real_escape_string($database, $personnel['group_number']) . "'";
 
     $sql .= " WHERE employee_number='" . mysqli_real_escape_string($database, $personnel['employee_number']) . "' LIMIT 1";
-    echo $sql;
     $result = mysqli_query($database, $sql);
     if ($result) {
         return true;

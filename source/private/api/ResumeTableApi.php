@@ -27,16 +27,18 @@ function find_resume_by_id($id)
 function create_resume($resume)
 {
     global $database;
+	
+	$stmt = $database->prepare("INSERT INTO ResumeTable (resume_date, resume_content, employee_number) VALUES (?, ?, ?)");
+	
+	$null = NULL;
+	$stmt->bind_param("sbi", 
+		$resume['resume_date'], 
+		$null, 
+		$resume['employee_number']
+	);
+	$stmt->send_long_data(1, $resume['resume_content']);
+	$result = $stmt->execute();
 
-    $sql = "INSERT INTO ResumeTable ";
-    $sql .= "(resume_date, resume_content, employee_number) ";
-    $sql .= "VALUES (";
-    $sql .= "'" . mysqli_real_escape_string($database, $resume['resume_date']) . "',";
-    $sql .= "'" . mysqli_real_escape_string($database, $resume['resume_content']) . "',";
-    $sql .= "'" . mysqli_real_escape_string($database, $resume['employee_number']) . "'";
-    $sql .= ")";
-
-    $result = mysqli_query($database, $sql);
     // For INSERT statements, $result is true/false
     if ($result) {
         return true;

@@ -3,7 +3,7 @@
 
 function db_connect() {
 	
-    $db_credentials = include(__DIR__ . '/../../../dbConfig.php');
+    include(__DIR__ . '/../../../dbConfig.php');
 
     $connection = mysqli_connect($db_credentials['db_host'], $db_credentials['db_user'], $db_credentials['db_pass'], $db_credentials['db_name']);
     confirm_db_connect();

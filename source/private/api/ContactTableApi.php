@@ -64,7 +64,6 @@ function update_contact($contact)
     $sql .= "email='" . mysqli_real_escape_string($database, $contact['email']) . "'";
 
     $sql .= " WHERE contact_number='" . mysqli_real_escape_string($database, $contact['contact_number']) . "' LIMIT 1";
-    echo $sql;
     $result = mysqli_query($database, $sql);
     if ($result) {
         return true;
