@@ -417,8 +417,9 @@ if (isset($_POST['create_return'])) {
 					<label class="title">Resume</label>
 					<div class="center">
 						<div>
-							<a href="#" class="button" id="view_resume">View Most Recent File</a>
+							<a href="assist/downloadresume.php?userId=<?php echo $_GET['userId']; ?>" class="button" id="view_resume">View Most Recent File</a>
 						</div>
+						<?php if (canEditUser($_GET['userId'])) { ?>
 						<div>
 							<input id="resume_file" class="inputfile" name="resume_content" type="file" />
 							<label for="resume_file"><i class="fa fa-upload" style="margin-right:10px;"></i>Choose a new file</label>
@@ -426,6 +427,7 @@ if (isset($_POST['create_return'])) {
 						<div>
 							<input type="submit" id="resume_file_submit" value="Add New Resume" />
 						</div>
+						<?php } ?>
 					</div>
 				</form>
 			</div>

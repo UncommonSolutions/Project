@@ -23,6 +23,19 @@ function find_resume_by_id($id)
     return $resume;
 }
 
+function find_latest_resume_by_user($id) {
+	global $database;
+
+    $sql = "SELECT * FROM ResumeTable ";
+    $sql .= "WHERE employee_number='" . mysqli_real_escape_string($database, $id) . "' ";
+	$sql .= "ORDER BY resume_date DESC LIMIT 1";
+    $result = mysqli_query($database, $sql);
+    confirm_result_set($result);
+    $resume = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $resume;
+}
+
 
 function create_resume($resume)
 {
