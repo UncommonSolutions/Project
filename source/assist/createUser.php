@@ -87,8 +87,13 @@ if (isset($_POST['new_user'])) {
 		'password_hash' => $passHash,
 		'last_login' => NULL
 	];
+	$personnel = [
+		'first_name' => $firstname, 
+		'middle_name' => $middlename, 
+		'last_name' => $lastname
+	];
 	
-	$result = create_user($user);
+	$result = create_all_user_entries($user, $personnel);
 	
 	if ($result === TRUE) {
 		returnWithResponse(TRUE, 100, "The user '$username' has been created");

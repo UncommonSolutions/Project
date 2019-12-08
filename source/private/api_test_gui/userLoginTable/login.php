@@ -15,7 +15,7 @@ if(is_post_request()) {
             $success = 1;
             set_last_login($user['user_id']);
             create_access_log($user, $success);
-            redirect_to(url_for('private/api_test_gui/UserLoginTable/index.php'));
+            redirect_to(url_for('private/api_test_gui/userLoginTable/index.php'));
         } else {
             create_access_log($user, $success);
             echo "wrong password!";

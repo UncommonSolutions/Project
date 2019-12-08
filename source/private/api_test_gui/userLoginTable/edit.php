@@ -17,7 +17,7 @@
 
 
         if($result === true) {
-            redirect_to(url_for('private/api_test_gui/UserLoginTable/read.php?id=' . $id));
+            redirect_to(url_for('private/api_test_gui/userLoginTable/read.php?id=' . $id));
         } else {
             echo "There are errors";
         }
@@ -29,13 +29,13 @@
 
 <div id="content">
 
-    <a class="" href="<?php echo url_for('private/api_test_gui/UserLoginTable/index.php'); ?>">&laquo; Back to List</a>
+    <a class="" href="<?php echo url_for('private/api_test_gui/userLoginTable/index.php'); ?>">&laquo; Back to List</a>
 
     <div class="">
         <h1>Edit User</h1>
 
 
-        <form action="<?php echo url_for('private/api_test_gui/UserLoginTable/edit.php?id=' . h(u($id))); ?>" method="post">
+        <form action="<?php echo url_for('private/api_test_gui/userLoginTable/edit.php?id=' . h(u($id))); ?>" method="post">
 
             <dl>
                 <dt>User Id</dt>

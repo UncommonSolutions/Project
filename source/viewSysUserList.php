@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link href="layout/fontawesome-4.6.3.min.css" rel="stylesheet" type="text/css" media="all">
 
 <link href="layout/viewSysUserList.css" rel="stylesheet" type="text/css" media="all">
@@ -58,11 +58,14 @@ if (isset($_POST['create_return']) || isset($_POST['delete_return'])) {
 		<?php
 		
 		foreach(find_all_users() as $user) {
+			$personnel = find_personnel_by_user_id($user['user_number']);
+			$contact = find_contact_by_id($personnel['personal_contact_number']);
+			$name = $contact['first_name'] . " " . $contact['middle_name'] . " " . $contact['last_name'];
 			?>
 			<div class="user table row">
 				<span class="user_username"><?php echo $user['user_name']; ?></span>
-				<span class="user_name"><?php //echo $user['name']; ?></span>
-				<span class="user_email"><?php //echo $user['email']; ?></span>
+				<span class="user_name"><?php echo $name; ?></span>
+				<span class="user_email"><?php echo $contact['email']; ?></span>
 				<?php if (canDeleteUser()) { ?>
 					<span class="user_delete right popup_link link" data-popup-id="delete_user" data-user-id="<?php echo $user['user_number']; ?>">
 						<i class="fa fa-times"></i>

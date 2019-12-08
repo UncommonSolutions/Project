@@ -138,3 +138,48 @@ function create_access_log($user, $isSuccess) {
         exit;
     }
 }
+
+function create_all_user_entries($user, $personnel) {
+	global $database;
+	
+	create_user($user);
+	$user_id = $database->insert_id;
+	create_contact([
+		"last_name" => $personnel["last_name"], 
+		"first_name" => $personnel["first_name"], 
+		"middle_name" => $personnel["middle_name"], 
+		"phone_number" => "", 
+		"address" => "", 
+		"email" => ""
+	]);
+	$contact_id = $database->insert_id;
+	create_contact([
+		"last_name" => "", 
+		"first_name" => "", 
+		"middle_name" => "", 
+		"phone_number" => "", 
+		"address" => "", 
+		"email" => ""
+	]);
+	$emergency_contact_id = $database->insert_id;
+	create_job([
+		"position_name" => "", 
+		"position_description" => ""
+	]);
+	$job_id = $database->insert_id;
+	create_group([
+		"group_name" => ""
+	]);
+	$group_id = $database->insert_id;
+	
+	create_personnel([
+		"user_number" => $user_id, 
+		"ssn" => "", 
+		"personal_contact_number" => $contact_id, 
+		"emergency_contact_number" => $emergency_contact_id, 
+		"job_number" => $job_id, 
+		"group_number" => $group_id
+	]);
+	
+	return true;
+}

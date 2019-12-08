@@ -28,6 +28,27 @@ function redirect($targetURL) {
 	exit(); // Quit the script.
 }
 
+function redirectToHome() {
+	global $_SEC_LEVEL;
+	switch ($_SESSION['account']['access']) {
+		case $_SEC_LEVEL['USER']:
+			redirect("/viewUserData.php?userId=" . $_SESSION['account']['id']);
+			break;
+		case $_SEC_LEVEL['PRIVILEGED']:
+			redirect("/viewUserList.php");
+			break;
+		case $_SEC_LEVEL['ADMIN']:
+			redirect("/viewUserList.php");
+			break;
+		case $_SEC_LEVEL['SYS_ADMIN']:
+			redirect("/viewSysUserList.php");
+			break;
+		default:
+			redirect("/logout.php");
+			break;
+	}
+}
+
 function canDeleteUser() {
 	if (!isLoggedIn()) {
 		return false;
@@ -66,6 +87,22 @@ function canEditUser($id) {
 	}
 }
 
+function canEditUserTraining($id) {
+	if (!isLoggedIn()) {
+		return false;
+	}
+	global $_SEC_LEVEL;
+	switch ($_SESSION['account']['access']) {
+		case $_SEC_LEVEL['ADMIN']:
+			return true;
+		case $_SEC_LEVEL['PRIVILEGED']:
+		case $_SEC_LEVEL['USER']:
+		case $_SEC_LEVEL['SYS_ADMIN']:
+		default:
+			return false;
+	}
+}
+
 function canCreateUser() {
 	if (!isLoggedIn()) {
 		return false;
@@ -90,9 +127,9 @@ function canViewUserDetails($id) {
 	}
 	global $_SEC_LEVEL;
 	switch ($_SESSION['account']['access']) {
+		case $_SEC_LEVEL['PRIVILEGED']:
 		case $_SEC_LEVEL['ADMIN']:
 			return true;
-		case $_SEC_LEVEL['PRIVILEGED']:
 		case $_SEC_LEVEL['USER']:
 			if ($id == $_SESSION['account']['id']) {
 				return true;

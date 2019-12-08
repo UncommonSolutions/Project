@@ -61,24 +61,24 @@ CREATE TABLE ContactTable (
 CREATE TABLE PersonnelTable (
     employee_number             INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_number                 INTEGER NOT NULL,
-    SSN                         VARCHAR(11),
+    ssn                         VARCHAR(11),
     personal_contact_number     INTEGER NOT NULL,
     emergency_contact_number    INTEGER,
     job_number                  INTEGER,
-    group_number				INTEGER,
+    group_number                INTEGER,
 	FOREIGN KEY (user_number)
 		REFERENCES UserLoginTable(user_number)
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (personal_contact_number)
 		REFERENCES ContactTable(contact_number)
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (emergency_contact_number)
 		REFERENCES ContactTable(contact_number)
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (job_number)
 		REFERENCES JobTable(job_number)
-        ON UPDATE CASCADE,
-	FOREIGN KEY (group_number)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (group_number)
 		REFERENCES GroupTable(group_number)
         ON UPDATE CASCADE ON DELETE CASCADE);
 

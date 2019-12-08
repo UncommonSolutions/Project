@@ -21,7 +21,7 @@ if (is_post_request()) {
     if ($result === true) {
         // Inserts auto incremented id into database
         $new_id = mysqli_insert_id($database);
-        redirect_to(url_for('private/api_test_gui/UserLoginTable/read.php?id=' . $new_id));
+        redirect_to(url_for('private/api_test_gui/userLoginTable/read.php?id=' . $new_id));
     } else {
         // show errors
     }
@@ -32,12 +32,12 @@ if (is_post_request()) {
 
 <div>
 
-    <a href="<?php echo url_for('private/api_test_gui/UserLoginTable/index.php'); ?>">&laquo; Back to List</a>
+    <a href="<?php echo url_for('private/api_test_gui/userLoginTable/index.php'); ?>">&laquo; Back to List</a>
 
     <div>
         <h1>Create User</h1>
 
-        <form action="<?php echo url_for('/private/api_test_gui/UserLoginTable/create.php'); ?>" method="post">
+        <form action="<?php echo url_for('/private/api_test_gui/userLoginTable/create.php'); ?>" method="post">
 
             <dl>
                 <dt>Username</dt>
