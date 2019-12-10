@@ -17,8 +17,14 @@ function setResponse($s, $e, $m) {
 
 function returnCurrentResponse() {
 	global $response;
+	
+	if ($_SESSION['account']['access'] == $_SEC_LEVEL['SYS_ADMIN']) {
+		$returnTarget = "../viewSysUserList.php";
+	} else {
+		$returnTarget = "../viewUserList.php";
+	}
 	?>
-	<form id="return" action="../viewSysUserList.php" method="post">
+	<form id="return" action="<?php echo $returnTarget; ?>" method="post">
 		<input type="hidden" name="status" value="<?php echo htmlentities(serialize($response)); ?>">
 		<input type="hidden" name="create_return" value="TRUE">
 	</form>
@@ -67,6 +73,9 @@ if (isset($_POST['new_user'])) {
 	}
 	if (!in_array($accessLevel, $_SEC_LEVEL)) {
 		returnWithResponse(FALSE, 200, "Invalid account type.");
+	}
+	if ($_SESSION['account']['access'] != $_SEC_LEVEL['SYS_ADMIN'] && $accessLevel == $_SEC_LEVEL['SYS_ADMIN']) {
+		returnWithResponse(FALSE, 200, "Invalid permissions.");
 	}
 	
 	$baseUsername = strtolower(substr($firstname, 0, 1) . substr($middlename, 0, 1) . $lastname);
