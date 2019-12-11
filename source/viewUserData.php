@@ -416,9 +416,15 @@ if (isset($_POST['create_return'])) {
 				<form action="assist/createResume.php?userId=<?php echo $_GET['userId']; ?>" method="post" enctype="multipart/form-data">
 					<label class="title">Resume</label>
 					<div class="center">
+					<?php
+						$personnel = find_personnel_by_user_id($_GET['userId']);
+
+						if (find_latest_resume_by_user($personnel['employee_number']) != null) {
+					?>
 						<div>
-							<a href="assist/downloadresume.php?userId=<?php echo $_GET['userId']; ?>" class="button" id="view_resume">View Most Recent File</a>
+							<a href="assist/downloadResume.php?userId=<?php echo $_GET['userId']; ?>" class="button" id="view_resume">View Most Recent File</a>
 						</div>
+						<?php } ?>
 						<?php if (canEditUser($_GET['userId'])) { ?>
 						<div>
 							<input id="resume_file" class="inputfile" name="resume_content" type="file" />

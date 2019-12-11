@@ -110,10 +110,10 @@ function canCreateUser() {
 	global $_SEC_LEVEL;
 	switch ($_SESSION['account']['access']) {
 		case $_SEC_LEVEL['SYS_ADMIN']:
+		case $_SEC_LEVEL['ADMIN']:
 			return true;
 			break;
 		case $_SEC_LEVEL['PRIVILEGED']:
-		case $_SEC_LEVEL['ADMIN']:
 		case $_SEC_LEVEL['USER']:
 		default:
 			return false;
