@@ -14,7 +14,7 @@ if (isset($_SESSION['account'])) {
 	<div id="header">
 		<div class="row0 wrapper"><div>
 			<img id="logo" src="./images/temp.png" />
-			<label id="logoText">Uncommon Solutions Personel Management System</label>
+			<label id="logoText">Uncommon Solutions Personnel Management System</label>
 			
 			<nav>
 				<ul>
