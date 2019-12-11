@@ -422,7 +422,7 @@ if (isset($_POST['create_return'])) {
 						if (find_latest_resume_by_user($personnel['employee_number']) != null) {
 					?>
 						<div>
-							<a href="assist/downloadresume.php?userId=<?php echo $_GET['userId']; ?>" class="button" id="view_resume">View Most Recent File</a>
+							<a href="assist/downloadResume.php?userId=<?php echo $_GET['userId']; ?>" class="button" id="view_resume">View Most Recent File</a>
 						</div>
 						<?php } ?>
 						<?php if (canEditUser($_GET['userId'])) { ?>
